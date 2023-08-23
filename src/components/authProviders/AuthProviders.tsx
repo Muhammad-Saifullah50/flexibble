@@ -6,12 +6,12 @@ type Provider = {
   id: string;
   name: string;
   type: string;
-  signInUrl: string;
+  signinUrl: string;
   callbackUrl: string;
   signinUrlParams?: Record<string, string> | null;
 };
 
-type Providers = Record<string, Provider>;
+type Providers = Record<string, Provider >;
 
 const AuthProviders = () => {
   const [providers, setProviders] = useState<Providers | null>(null);
@@ -20,7 +20,7 @@ const AuthProviders = () => {
     const fetchProviders = async () => {
       const response = await getProviders();
       setProviders(response);
-      console.log(response);
+      console.log(response); 
 
     };
     fetchProviders();
