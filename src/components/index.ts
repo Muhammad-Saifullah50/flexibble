@@ -6,6 +6,7 @@ import Modal from "./modal/Modal";
 import ProjectForm from "./projectForm/ProjectForm";
 import FormField from "./formField/FormField";
 import CustomMenu from "./customMenu/CustomMenu";
+import CustomButton from "./customButton/CustomButton";
 
 export {
     Navbar,
@@ -15,5 +16,6 @@ export {
     Modal,
     ProjectForm,
     FormField,
-    CustomMenu
+    CustomMenu,
+    CustomButton
 }

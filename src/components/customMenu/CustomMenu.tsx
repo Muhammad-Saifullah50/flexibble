@@ -1,7 +1,6 @@
 "use client"
 import { Menu } from "@headlessui/react"
 import Image from "next/image"
-import { Fragment } from "react"
 
 type Props = {
     title: string
@@ -18,17 +17,28 @@ const CustomMenu = ({ title, state, filters, setState }: Props) => {
                     <Menu.Button
                         className="flexCenter custom_menu-btn"   >
                         {state || "Select a category"}
-                        <Image 
-                        src='/arrow-down.svg'
-                        width={10}
-                        height={5}
-                        alt="arrow down"
-                        
+                        <Image
+                            src='/arrow-down.svg'
+                            width={10}
+                            height={5}
+                            alt="arrow down"
                         />
-
-                        
                     </Menu.Button>
                 </div>
+                <Menu.Items className='flexStart custom_menu-items'>
+                    {filters.map((tag) => (
+                        <Menu.Item key={tag}>
+                            <button
+                                type="button"
+                                value={tag}
+                                className="custom_menu-item"
+                                onClick={(e) => setState(e.currentTarget.value)}
+                            >
+                                {tag}
+                            </button>
+                        </Menu.Item>
+                    ))}
+                </Menu.Items>
             </Menu>
         </div>
     )
