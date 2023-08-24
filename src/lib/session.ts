@@ -7,8 +7,9 @@ import { JWT } from 'next-auth/jwt'
 import { SessionInterface, UserProfile } from "@/types/commonTypes";
 import { createUser, getUser } from "./actions";
 
+// auth option structure coming from nextauth
 export const authOptions: NextAuthOptions = {
-    providers: [
+    providers: [ // making only google provider
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET!
@@ -19,14 +20,14 @@ export const authOptions: NextAuthOptions = {
             const encodedToken = jsonwebtoken.sign({
                 ...token,
                 iss: 'grafbase',
-                exp: Math.floor(Date.now() / 1000) + 60 * 60
+                exp: Math.floor(Date.now() / 1000) + 60 * 60 // 13h
             }, secret)
-            console.log(encodedToken, "encodedToken")
+            // console.log(encodedToken, "encodedToken")
             return encodedToken
         },
         decode: async ({ secret, token }) => {
             const decodedToken = jsonwebtoken.verify(token!, secret) as JWT
-            console.log(decodedToken, "decodedToken")
+            // console.log(decodedToken, "decodedToken")
             return decodedToken
         }
     },
@@ -78,7 +79,7 @@ export const authOptions: NextAuthOptions = {
     }
 }
 
-export const getCurrentUser = async () => {
+export const getCurrentUser = async () => { 
     const session = await getServerSession(authOptions) as SessionInterface;
     return session
 }

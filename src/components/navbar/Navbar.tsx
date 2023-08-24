@@ -4,9 +4,14 @@ import Link from "next/link";
 import React from "react";
 import { AuthProviders } from "..";
 import { getCurrentUser } from "@/lib/session";
+import {ProfileMenu} from "..";
+
 
 const Navbar = async () => {
-  const session = await getCurrentUser();
+  const session = await getCurrentUser(); // session is a period of time where user interacts with the app
+  // retrieving info about current user
+  // console.log(session, "session");
+
   return (
     <nav className="flexBetween navbar">
       <div className="flex-1 flexStart gap-10">
@@ -26,17 +31,10 @@ const Navbar = async () => {
       <div className="flexCenter gap-4">
         {session?.user ? ( // if user is logged in we will show photo and share work btn, else show the authproviders component
           <>
-            {session?.user?.image && (
-              <Image
-                src={session.user.image}
-                width={40}
-                height={40}
-                alt={session.user.name}
-                className="rounded-full"
-              />
-            )}
+            <ProfileMenu session={session}/>
 
             <Link href="/create-project">Share Work</Link>
+
           </>
         ) : (
           <AuthProviders />
