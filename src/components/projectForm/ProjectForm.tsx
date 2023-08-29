@@ -5,6 +5,8 @@ import { ChangeEvent } from "react"
 import { CustomButton, CustomMenu, FormField } from ".."
 import { categoryFilters } from "@/constants"
 import { useState } from "react"
+import { createNewProject, fetchToken } from "@/lib/actions"
+import { useRouter } from "next/navigation"
 
 type Props = {
     type: string
@@ -12,8 +14,26 @@ type Props = {
 }
 
 const ProjectForm = ({ type, session }: Props) => {
+    const router = useRouter();
+    const handleFormSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
 
-    const handleFormSubmit = (e: React.FormEvent) => { }
+        setisSubmitting(true)
+
+        const { token } = await fetchToken()
+
+        try {
+            if (type === "create") {
+                await createNewProject(form, session?.user?.id, token)
+                router.push('/')
+            }
+        } catch (error) {
+            console.log(error);
+        }
+        finally {
+            setisSubmitting(false)
+        }
+    }
 
 
     const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
