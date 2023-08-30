@@ -7,6 +7,7 @@ import ProjectForm from "./projectForm/ProjectForm";
 import FormField from "./formField/FormField";
 import CustomMenu from "./customMenu/CustomMenu";
 import CustomButton from "./customButton/CustomButton";
+import ProjectCard from "./projectCard/ProjectCard";
 
 export {
     Navbar,
@@ -17,5 +18,6 @@ export {
     ProjectForm,
     FormField,
     CustomMenu,
-    CustomButton
+    CustomButton,
+    ProjectCard
 }
