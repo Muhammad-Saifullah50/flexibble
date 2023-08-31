@@ -81,11 +81,11 @@ export const deleteProjectMutation = `
     }
   }
 `;
-      
+
 
 export const projectsQuery = `
-  query getProjects($category: String, $endcursor: String) {
-    projectSearch(first: 8, after: $endcursor, filter: {category: {eq: $category}}) {
+  query getProjects($categories: [String!], $endCursor: String) {
+    projectSearch(first: 8, after: $endCursor, filter: {category: {in: $categories}}) {
       pageInfo {
         hasNextPage
         hasPreviousPage
@@ -133,7 +133,7 @@ export const getProjectByIdQuery = `
   }
 `;
 
-      
+
 export const getProjectsOfUserQuery = `
   query getUserProjects($id: ID!, $last: Int = 4) {
     user(by: { id: $id }) {

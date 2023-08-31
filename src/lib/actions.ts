@@ -1,4 +1,5 @@
-import { createProjectMutation, createUserMutation, getUserQuery, projectsQuery } from "@/graphql";
+import { categoryFilters } from "@/constants";
+import { createProjectMutation, createUserMutation, getProjectByIdQuery, getUserQuery, projectsQuery } from "@/graphql";
 import { ProjectForm } from "@/types/commonTypes";
 import { GraphQLClient } from "graphql-request";
 
@@ -83,7 +84,14 @@ export const createNewProject = async (form: ProjectForm, creatorId: string, tok
 }
 
 export const fetchAllProjects = async (category?: string | null, endcursor?: string | null) => {
-    client.setHeader('x-api-key', apiKey)
+    client.setHeader('x-api-key', apiKey) // settign api key in header
 
-    return makeGraphQLRequest(projectsQuery, { category, endcursor })
+    const categories = category == null ? categoryFilters : [category];
+    // show all projects when category is not provided i.e null
+    return makeGraphQLRequest(projectsQuery, { categories, endcursor })
+}
+
+export const getProjectDetails = (id: string) => {
+    client.setHeader('x-api-key', apiKey) // settign api key in header
+    return makeGraphQLRequest(getProjectByIdQuery, { id })
 }
