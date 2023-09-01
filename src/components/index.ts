@@ -10,6 +10,8 @@ import CustomButton from "./customButton/CustomButton";
 import ProjectCard from "./projectCard/ProjectCard";
 import RelatedProjects from "./relatedProjects/RelatedProjects";
 import ProjectActions from "./projectActions/ProjectActions";
+import Categories from "./categories/Categories";
+import LoadMore from "./loadMore/LoadMore";
 
 export {
     Navbar,
@@ -23,5 +25,7 @@ export {
     CustomButton,
     ProjectCard,
     RelatedProjects,
-    ProjectActions
+    ProjectActions,
+    Categories,
+    LoadMore
 }
