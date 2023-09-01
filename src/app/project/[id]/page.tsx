@@ -1,4 +1,4 @@
-import { Modal } from '@/components';
+import { Modal, RelatedProjects } from '@/components';
 import { getProjectDetails } from '@/lib/actions';
 import { getCurrentUser } from '@/lib/session'
 import { ProjectInterface } from '@/types/commonTypes';
@@ -21,20 +21,20 @@ const Project = async ({ params: { id } }: { params: { id: string } }) => {
     return (
         <section>
             <Modal>
-                <div className="header flex mb-16 gap-6 w-full">
+                <div className="header flex mb-16 gap-6 w-full max-w-[65rem]">
                     <div className="avatar flexCenter">
                         <Link href={renderLink()}>
-                        <Image
-                            src={result?.project.createdBy.avatarUrl}
-                            width={60}
-                            height={60}
-                            alt='avatar'
-                            className='rounded-full'
-                        />
+                            <Image
+                                src={result?.project.createdBy.avatarUrl}
+                                width={60}
+                                height={60}
+                                alt='avatar'
+                                className='rounded-full'
+                            />
                         </Link>
                     </div>
                     <div className="text w-full">
-                        <div className='top font-semibold'>
+                        <div className='top font-semibold text-lg'>
                             {result?.project.title}
                         </div>
                         <div className="bottom flex flex-wrap  ">
@@ -47,9 +47,9 @@ const Project = async ({ params: { id } }: { params: { id: string } }) => {
                 <div className="image">
                     <Image
                         src={result?.project.image}
-                        className='object-contain rounded-2xl'
-                        width={800}
-                        height={500}
+                        className='object-cover rounded-2xl'
+                        width={1064}
+                        height={798}
                         alt='image'
                     />
                 </div>
@@ -60,7 +60,7 @@ const Project = async ({ params: { id } }: { params: { id: string } }) => {
                 <div className="links flex justify-around flex-wrap mt-12">
                     <Link
                         href={result?.project.githubUrl}
-                        target='_blank' 
+                        target='_blank'
                         className='text-primary-purple flex pb-2 px-3'>
                         <Image
                             src='/github-mark.svg'
@@ -71,7 +71,7 @@ const Project = async ({ params: { id } }: { params: { id: string } }) => {
                         <p>View on Github</p>
                     </Link>
                     <Link
-                    target='_blank'
+                        target='_blank'
                         href={result?.project.liveSiteUrl} className='text-primary-purple flex  px-3'>
                         &#128640; View live Demo
                     </Link>
@@ -79,18 +79,22 @@ const Project = async ({ params: { id } }: { params: { id: string } }) => {
 
                 <div className='flexCenter w-full gap-8 mt-28'>
                     <span className='w-full h-0.5 bg-light-white-200' />
-                    <Link href={renderLink()} >
-                    <Image
-                        src={result?.project.createdBy.avatarUrl}
-                        width={80}
-                        height={80}
-                        alt='profile'
-                        className='rounded-full'
-                    />
+                    <Link href={renderLink()} className="min-w-[70px] h-[70px]" >
+                        <Image
+                            src={result?.project.createdBy.avatarUrl}
+                            width={70}
+                            height={70}
+                            alt='profile'
+                            className='rounded-full '
+                        />
                     </Link>
                     <span className='w-full h-0.5 bg-light-white-200' />
                 </div>
 
+                <RelatedProjects
+                    userId={result?.project.createdBy?.id}
+                    projectId={result?.project.id}
+                />
             </Modal>
         </section>
     )
