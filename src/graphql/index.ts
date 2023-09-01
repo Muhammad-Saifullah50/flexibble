@@ -9,7 +9,7 @@ query GetUser($email: String!) {
         avatarUrl
         description
         githubUrl
-        linkedInUrl
+        linkedinUrl
 
     }
 }

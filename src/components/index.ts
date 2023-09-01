@@ -9,6 +9,7 @@ import CustomMenu from "./customMenu/CustomMenu";
 import CustomButton from "./customButton/CustomButton";
 import ProjectCard from "./projectCard/ProjectCard";
 import RelatedProjects from "./relatedProjects/RelatedProjects";
+import ProjectActions from "./projectActions/ProjectActions";
 
 export {
     Navbar,
@@ -21,5 +22,6 @@ export {
     CustomMenu,
     CustomButton,
     ProjectCard,
-    RelatedProjects
+    RelatedProjects,
+    ProjectActions
 }

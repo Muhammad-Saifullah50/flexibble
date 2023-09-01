@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { signIn, getProviders } from "next-auth/react";
+import { CustomButton } from "..";
 
 // defining a type for the provider (google, github, facebook etc)
 type Provider = {
@@ -31,7 +32,11 @@ const AuthProviders = () => {
     return (
       <div>
         {Object.values(providers).map((provider: Provider, i) => (
-          <button key={i} onClick={(() => signIn(provider?.id))}>{provider.id}</button>
+          <CustomButton
+            key={i}
+            title='Sign In'
+            handleClick={(() => signIn(provider?.id))}
+          />
           // signin function from nextauth
         ))}
       </div>
