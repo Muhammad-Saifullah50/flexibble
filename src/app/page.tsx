@@ -15,15 +15,19 @@ type ProjectSearch = {
 }
 type SearchParams = {
   category?: string
+  endcursor?: string 
 }
 type Props = {
   searchParams: SearchParams
 }
 
-const Home = async ({ searchParams: { category } }: Props) => {
+export const dynamic = 'force-dynamic'
+export const dynamicParams = true
+export const revalidate = 0
+const Home = async ({ searchParams: { category, endcursor } }: Props) => {
   // console.log(category)
 
-  const data = await fetchAllProjects(category) as ProjectSearch;
+  const data = await fetchAllProjects(category, endcursor) as ProjectSearch;
 
   const ProjectsToDisplay = data?.projectSearch?.edges || []
 
@@ -36,6 +40,7 @@ const Home = async ({ searchParams: { category } }: Props) => {
     )
   }
   const pagination = data?.projectSearch?.pageInfo
+
   return (
     <section className="flex-start flex-col paddings mb-16">
 

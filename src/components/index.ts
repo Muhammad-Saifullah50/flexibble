@@ -12,7 +12,7 @@ import RelatedProjects from "./relatedProjects/RelatedProjects";
 import ProjectActions from "./projectActions/ProjectActions";
 import Categories from "./categories/Categories";
 import LoadMore from "./loadMore/LoadMore";
-
+import ProfilePage from "./profilePage/ProfilePage";
 export {
     Navbar,
     Footer,
@@ -27,5 +27,6 @@ export {
     RelatedProjects,
     ProjectActions,
     Categories,
-    LoadMore
+    LoadMore,
+    ProfilePage
 }
