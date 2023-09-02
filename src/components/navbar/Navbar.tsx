@@ -2,9 +2,9 @@ import { NavLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { AuthProviders } from "..";
+import { AuthProviders, CustomButton } from "..";
 import { getCurrentUser } from "@/lib/session";
-import {ProfileMenu} from "..";
+import { ProfileMenu } from "..";
 
 
 const Navbar = async () => {
@@ -31,9 +31,13 @@ const Navbar = async () => {
       <div className="flexCenter gap-4">
         {session?.user ? ( // if user is logged in we will show photo and share work btn, else show the authproviders component
           <>
-            <ProfileMenu session={session}/>
+            <ProfileMenu session={session} />
 
-            <Link href="/create-project">Share Work</Link>
+            <Link href="/create-project">
+              <CustomButton 
+              title="Share Work"
+              />
+            </Link>
 
           </>
         ) : (
