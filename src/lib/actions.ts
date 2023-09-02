@@ -5,11 +5,11 @@ import { GraphQLClient } from "graphql-request";
 
 const isProduction = process.env.NODE_ENV === 'production'; // prod environment
 
-const apiUrl = isProduction ? process.env.NEXT_PUBLIC_GRAFBASE_API_URL || "" : 'https://flexibble-muhammad-saifullah50.grafbase.app/graphql' // api url in both dev and prod
+const apiUrl = isProduction ? process.env.NEXT_PUBLIC_GRAFBASE_API_URL || "" : 'http://127.0.0.1:4000/graphql' // api url in both dev and prod
 
 const apiKey = isProduction ? process.env.NEXT_PUBLIC_GRAFBASE_API_KEY || "" : "letmein" // api key in both dev and prod     dummy on local
 
-const serverUrl = isProduction ? process.env.NEXT_PUBLIC_SERVER_URL : 'https://flexibble-smoky-nine.vercel.app/' // sever url on local and prod
+const serverUrl = isProduction ? process.env.NEXT_PUBLIC_SERVER_URL : 'http://localhost:3000' // sever url on local and prod
 
 const client = new GraphQLClient(apiUrl)
 // console.log(client)
