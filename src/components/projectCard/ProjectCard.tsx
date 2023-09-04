@@ -63,7 +63,7 @@ const ProjectCard = ({ key, id, image, title, name, avatarUrl, userId }: Props) 
           </div>
           <div className='flexCenter gap-2'>
             <Image
-              src='/eye.svg '
+              src='/eye.svg'
               width={12}
               height={9}
               alt='eye'
