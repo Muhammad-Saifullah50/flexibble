@@ -54,7 +54,7 @@ const ProjectCard = ({ key, id, image, title, name, avatarUrl, userId }: Props) 
         <div className='flexCenter gap-3'>
           <div className='flexCenter gap-2'>
             <Image
-              src='/hearth.png '
+              src='/hearth.svg'
               width={13}
               height={12}
               alt='heart'
@@ -63,9 +63,9 @@ const ProjectCard = ({ key, id, image, title, name, avatarUrl, userId }: Props) 
           </div>
           <div className='flexCenter gap-2'>
             <Image
-              src='/eye.png '
-              width={13}
-              height={12}
+              src='/eye.svg '
+              width={12}
+              height={9}
               alt='eye'
             />
             <p className='text-sm'>{randomViews}</p>
